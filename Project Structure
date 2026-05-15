@@ -1,0 +1,17 @@
+smart-traffic-springboot/
+│
+├── backend/
+│   └── src/main/java/com/traffic/
+│        ├── controller/
+│        ├── service/
+│        ├── model/
+│        ├── repository/
+│        └── TrafficApplication.java
+│
+├── frontend/
+│   └── index.html
+│
+├── esp32-code/
+│   └── sensor_upload.ino
+│
+├── README.md

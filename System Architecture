@@ -1,0 +1,7 @@
+ESP32 Sensors
+     ↓ (HTTP POST)
+Spring Boot REST API
+     ↓
+Traffic Decision Engine
+     ↓
+Frontend Dashboard (HTML/React)

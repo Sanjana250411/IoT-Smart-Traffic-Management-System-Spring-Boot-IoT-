@@ -1,0 +1,33 @@
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/traffic")
+public class TrafficController {
+
+    TrafficData data = new TrafficData();
+
+    @PostMapping("/update")
+    public String update(@RequestBody TrafficData newData) {
+        data = newData;
+        return "Data Updated";
+    }
+
+    @GetMapping("/status")
+    public TrafficData status() {
+        return data;
+    }
+
+    // 🚦 Simple logic: find max lane
+    @GetMapping("/green")
+    public String greenLane() {
+
+        int max = data.lane1;
+        int lane = 1;
+
+        if (data.lane2 > max) { max = data.lane2; lane = 2; }
+        if (data.lane3 > max) { max = data.lane3; lane = 3; }
+        if (data.lane4 > max) { max = data.lane4; lane = 4; }
+
+        return "Green Signal → Lane " + lane;
+    }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traffic System</title>
+</head>
+<body>
+
+<h2>🚦 Smart Traffic Dashboard</h2>
+
+<button onclick="loadData()">Get Traffic Data</button>
+<button onclick="getGreen()">Which Lane is GREEN?</button>
+
+<p id="output"></p>
+
+<script>
+async function loadData() {
+  let res = await fetch("http://localhost:8080/traffic/status");
+  let data = await res.json();
+
+  document.getElementById("output").innerHTML =
+    "Lane1: " + data.lane1 + "<br>" +
+    "Lane2: " + data.lane2 + "<br>" +
+    "Lane3: " + data.lane3 + "<br>" +
+    "Lane4: " + data.lane4;
+}
+
+async function getGreen() {
+  let res = await fetch("http://localhost:8080/traffic/green");
+  let text = await res.text();
+
+  document.getElementById("output").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
